@@ -13,6 +13,10 @@ header {
   padding: 1rem;
 }
 
+.profile-pic {
+  width: 25%;
+}
+
 nav ul {
   list-style-type: none;
   margin: 0;
