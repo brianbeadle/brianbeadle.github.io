@@ -51,3 +51,18 @@ footer {
 .profile-pic {
   width: 10%;
 }
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-text {
+  margin-left: 1rem;
+}
+
+.profile-text p {
+  margin: 0;
+  font-size: 0.9em; /* Adjust font size as needed */
+}
+
