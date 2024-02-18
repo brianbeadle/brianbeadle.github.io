@@ -58,7 +58,8 @@ footer {
 }
 
 .profile-text {
-  margin-left: 2rem;
+  margin-left: 5rem;
+  font-size: 0.7em;
 }
 
 .profile-text p {
