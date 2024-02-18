@@ -13,10 +13,6 @@ header {
   padding: 1rem;
 }
 
-.profile-pic {
-  width: 25%;
-}
-
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -50,4 +46,8 @@ footer {
   color: #fff;
   padding: 1rem;
   text-align: center;
+}
+
+.profile-pic {
+  width: 25%;
 }
