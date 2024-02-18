@@ -67,3 +67,8 @@ footer {
   font-size: 0.7em; /* Adjust font size as needed */
 }
 
+.cv-link {
+  color: #555;
+  font-weight: bold;
+  text-decoration: underline;
+}
