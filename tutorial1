@@ -3,41 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial</title>
-    <style>
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: 'Courier New', Courier, monospace;
-        }
-    </style>
+    <title>Test Page</title>
 </head>
 <body>
-    <h1>Tutorial: Making presentations in LaTeX using Beamer</h1>
-    <h2>Step 1: Install LaTeX</h2>
-    <p>First, install LaTeX on your system by following the instructions on <a href="https://www.latex-project.org/get/">LaTeX Project website</a>.</p>
-    
-    <h2>Step 2: Create a LaTeX document</h2>
-    <p>Create a new LaTeX document with the following content:</p>
-    <pre><code>\documentclass{beamer}
-    
-\begin{document}
-
-\begin{frame}
-    \frametitle{Sample Frame}
-    This is a sample frame.
-\end{frame}
-
-\end{document}</code></pre>
-
-    <h2>Step 3: Compile the document</h2>
-    <p>Compile the LaTeX document using your preferred LaTeX compiler.</p>
-
-    <!-- Add more steps and content as needed -->
-
+    <h1>This is a Test Page</h1>
+    <p>This is a basic HTML file to test if the page loads correctly.</p>
 </body>
 </html>
