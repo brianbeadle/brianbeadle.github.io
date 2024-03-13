@@ -16,6 +16,18 @@
     #research-link a:hover {
       text-decoration: underline; /* Underline on hover */
     }
+    
+    /* CSS for image container */
+    .image-container {
+      overflow-x: auto; /* Enable horizontal scrolling */
+      white-space: nowrap; /* Prevent wrapping of images */
+    }
+    .image-container img {
+      display: inline-block; /* Display images inline */
+      max-height: 250px; /* Set maximum height for images */
+      height: auto; /* Maintain aspect ratio */
+      margin-right: 10px; /* Add space between images */
+    }
   </style>
 </head>
 <body>
@@ -37,7 +49,7 @@
       </ul>
     </nav> 
   </header>
-
+  
   <main>
     <section id="images">
       <h2>Media</h2>
