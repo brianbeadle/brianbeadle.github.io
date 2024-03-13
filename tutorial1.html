@@ -42,9 +42,14 @@
     .copy-button {
       position: absolute;
       top: 5px;
-      right: 10px;
+      right: 5px;
       cursor: pointer;
       color: #0366d6;
+      font-size: 12px;
+      padding: 2px 6px;
+      background-color: #f4f4f4;
+      border: 1px solid #0366d6;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -61,20 +66,18 @@
 
   <pre><code>
   \documentclass{beamer}
-  <span class="copy-button">Copy</span>
+  <span class="copy-button" onclick="copyText(this)">Copy</span>
   </code></pre>
 
   <h2>Conclusion</h2>
   <p>Feel free to copy and paste the code snippets for your own use!</p>
 
   <script>
-    document.querySelectorAll('.copy-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const text = button.parentElement.textContent.trim();
-        navigator.clipboard.writeText(text);
-        alert('Code copied to clipboard!');
-      });
-    });
+    function copyText(element) {
+      const text = element.parentElement.textContent.trim();
+      navigator.clipboard.writeText(text);
+      alert('Code copied to clipboard!');
+    }
   </script>
 </body>
 </html>
