@@ -13,6 +13,17 @@
       padding: 20px;
     }
 
+    header {
+      background-color: #f3f3f3;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #333;
+    }
+
     pre {
       background-color: #f4f4f4;
       border-left: 4px solid #0366d6;
@@ -29,20 +40,18 @@
   </style>
 </head>
 <body>
-  <h1>Code Tutorial</h1>
+  <header>
+    <h1>Introduction to Beamer presentations using LaTeX</h1>
+  </header>
 
   <h2>Introduction</h2>
-  <p>This is an example HTML document that mimics the appearance of a Markdown document.</p>
+  <p>In this tutorial, I am going to explain how to build a basic presentation in LaTeX. We will go over the commands to specify the document class, load packages, and build slides containing text, columns, images, and basic tables.</p>
 
-  <h2>Code Example</h2>
-  <p>Below is an example of code snippet:</p>
+  <h2>Preamble commands</h2>
+  <p>To begin, we will specify the beamer document class that is designed for building slides:</p>
 
   <pre><code>
-function greet(name) {
-    return "Hello, " + name + "!";
-}
-
-console.log(greet("World"));
+  \documentclass{beamer}
   </code></pre>
 
   <h2>Conclusion</h2>
