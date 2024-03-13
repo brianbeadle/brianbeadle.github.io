@@ -6,6 +6,18 @@
   <title>Brian Beadle, PhD</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CSS for link to research page */
+    #research-link a {
+      font-size: 1.17em; /* Match font size of h3 */
+      font-weight: bold; /* Match font weight of h3 */
+      color: #333; /* Match color of h3 */
+      text-decoration: none; /* Remove underline */
+    }
+    #research-link a:hover {
+      color: #555; /* Change color on hover */
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -21,31 +33,26 @@
       <ul>
         <li><a href="https://linkedin.com/in/brian-beadle-a6042546">LinkedIn</a></li>
         <li><a href="cv.html">CV</a></li>
+        <li id="research-link"><a href="research.html">Research</a></li> <!-- Add ID to target specific styling -->
         <li><a href="mailto:bbeadle@northland.edu">Email</a></li>
       </ul>
     </nav> 
   </header>
 
   <main>
-    <section id="research">
-      <h2>Research</h2>
-      <p>Explore my current research projects:</p>
-      <ul>
-        <li><a href="research-asia.html">Research Descriptions</a></li>
-      </ul>
-    </section>
-    
-    <section id="publications">
-      <h2>Publications</h2>
-      <iframe src="publications.html" width="600px" height="600px" frameborder="0"></iframe>
+    <section id="images">
+      <h2>Images</h2>
+      <div class="image-container">
+        <img src="research-image1.jpg" alt="Research Image 1">
+        <img src="research-image2.jpg" alt="Research Image 2">
+        <!-- Add more images as needed -->
+      </div>
     </section>
 
-    <!-- section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:bbeadle@northland.edu">bbeadle@northland.edu</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/brian-beadle-a6042546/">https://www.linkedin.com/in/brian-beadle-a6042546/</a></p>
-      <!-- Add more contact information as needed
-    </section> -->
+    <section id="description">
+      <h2>Description</h2>
+      <p>This space is reserved for a detailed description of your current research projects. You can provide information about your research goals, methodologies, findings, and any other relevant details here.</p>
+    </section>
   </main>
 
   <footer>
