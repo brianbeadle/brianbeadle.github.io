@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Descriptions</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CSS for image container */
+    .image-container {
+      overflow-x: auto; /* Enable horizontal scrolling */
+      white-space: nowrap; /* Prevent wrapping of images */
+    }
+    .image-container img {
+      display: inline-block; /* Display images inline */
+      max-width: 100%; /* Ensure images don't exceed container width */
+      height: auto; /* Maintain aspect ratio */
+      margin-right: 10px; /* Add space between images */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Research Descriptions</h1>
+  </header>
+
+  <main>
+    <section id="images">
+      <h2>Images</h2>
+      <div class="image-container">
+        <img src="research-image1.jpg" alt="Research Image 1">
+        <img src="research-image2.jpg" alt="Research Image 2">
+        <!-- Add more images as needed -->
+      </div>
+    </section>
+
+    <section id="description">
+      <h2>Description</h2>
+      <p>This space is reserved for a detailed description of your current research projects. You can provide information about your research goals, methodologies, findings, and any other relevant details here.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Brian Beadle. All rights reserved.</p>
+  </footer>
+</body>
+</html>
