@@ -32,10 +32,19 @@
       overflow: auto;
       padding: 10px;
       white-space: pre-wrap;
+      position: relative;
     }
 
     code {
       font-family: Consolas, monospace;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+      color: #0366d6;
     }
   </style>
 </head>
@@ -52,7 +61,16 @@
 
   <pre><code>
   \documentclass{beamer}
+  <span class="copy-button" onclick="copyText(this)">Copy</span>
   </code></pre>
+
+  <script>
+    function copyText(element) {
+      const text = element.parentElement.textContent.trim();
+      navigator.clipboard.writeText(text);
+      alert('Code copied to clipboard!');
+    }
+  </script>
 
   <h2>Conclusion</h2>
   <p>Feel free to copy and paste the code snippets for your own use!</p>
