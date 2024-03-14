@@ -65,7 +65,7 @@
   <p>To begin, we will specify the beamer document class that is designed for building slides:</p>
 
   <pre><code>
-  \documentclass{beamer}
+   \documentclass{beamer}
   <span class="copy-button" onclick="copyText(this)">Copy</span>
   </code></pre>
   <p>Next, we will want to choose a theme. There are a plethora of themes to choose from, and I recommend taking a few moments to review the theme gallery provided by <a href="https://deic.uab.cat/~iblanes/beamer_gallery/" target="_blank">UAB Barcelona</a>.</p>
@@ -73,14 +73,36 @@
   <p>In addition to the Berlin theme, I add commands to give the appearance a bit more flavor. The option <code>compress</code> makes the navigation bar as small as possible, and I use the <code>crane</code> color theme and the <code>structuresmallcapsserif</code> font option. </p>
   
   <pre><code>
-  \usetheme[compress]{Berlin}
-  \usecolortheme{crane}
-  \usefonttheme{structuresmallcapsserif} 
+   \usetheme[compress]{Berlin}
+   \usecolortheme{crane}                     % specifies the colors of the background and font
+   \usefonttheme{structuresmallcapsserif}    % specifies the font style
+  <span class="copy-button" onclick="copyText(this)">Copy</span>
+  </code></pre>
+  <p>Finally, we need to specify a few packages to make sure we have the necessary options for our slides.</p>
+
+  <pre><code>
+   \usepackage{hyperref}                     % gives us the option to use hyperlinks
+  <span class="copy-button" onclick="copyText(this)">Copy</span>
+  </code></pre>
+  <p>Finally, we use the command to end the preamble and begin the visible portion of the document:</p>
+
+  <pre><code>
+   \begin{document}              
   <span class="copy-button" onclick="copyText(this)">Copy</span>
   </code></pre>
   
-  <h2>Conclusion</h2>
-  <p>Feel free to copy and paste the code snippets for your own use!</p>
+  <h2>Document</h2>
+  <p>Now we can begin creating slides (i.e. frames)! Let's begin with a basic slide that has a title and text in the body. We can also specify the introductory section of the presentation, which will appear as a clickable title in the navigation bar of the <code>Berlin</code> theme we are using.</p>
+
+  <pre><code>
+   \section{Introduction}                    % creates the section for the navigation bar
+   \begin{frame}{Cover slide}                % creates the beginning of the first slide with the title "Cover slide"
+      Title: My Beamer presentation          % first content of the presentation, where you are giving it a title
+      Author: You
+      Date: \today                           % the \today command automatically sets the date
+    \end{frame}                              % ends the slide
+  <span class="copy-button" onclick="copyText(this)">Copy</span>
+  </code></pre>
 
   <script>
     function copyText(element) {
