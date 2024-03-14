@@ -107,8 +107,25 @@
 
   <script>
     function copyText(element) {
-      const text = element.parentElement.textContent.trim();
-      navigator.clipboard.writeText(text);
+      // Create a temporary textarea element
+      const tempTextArea = document.createElement('textarea');
+
+      // Set the value of the temporary textarea to the code content
+      tempTextArea.value = element.parentElement.textContent.trim();
+
+      // Append the temporary textarea to the document body
+      document.body.appendChild(tempTextArea);
+
+      // Select the text in the textarea
+      tempTextArea.select();
+
+      // Copy the selected text to the clipboard
+      document.execCommand('copy');
+
+      // Remove the temporary textarea from the document body
+      document.body.removeChild(tempTextArea);
+
+      // Show a confirmation message
       alert('Code copied to clipboard!');
     }
   </script>
