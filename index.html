@@ -6,83 +6,122 @@
   <title>Dr. Brian Beadle</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* CSS for profile-text */
-    .profile-text {
-      font-size: 1.1em; /* Set font size */
-    }
-    .profile-text h1,
-    .profile-text h3,
-    .profile-text p {
-      margin: 0.2em 0; /* Set equal top and bottom margin, no left and right margin */
-    }
-    .profile-text p {
-      font-size: 1em; /* Set font size smaller for research interests */
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <div class="profile-info">
-      <img src="profile-crop.jpg" alt="Profile Picture" class="profile-pic">
-      <div class="profile-text">
-        <h1>Dr. Brian Beadle</h1>
-        <h3>Socio-Ecological Economist</h3>
-        <p>Research interests: Applied microeconometrics, Bayesian item response modeling, composite indicators,<br>(agricultural) sustainability, subjective well-being</p>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-section">
+        <img src="profile-crop.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="profile-info">
+          <h1>Dr. Brian Beadle</h1>
+          <h3>Socio-Ecological Economist</h3>
+          <p>Applied microeconometrics, Bayesian item response modeling, composite indicators, sustainability, subjective well-being</p>
+        </div>
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/brian-beadle-a6042546" target="_blank">LinkedIn</a>
+          <a href="CV_042924.pdf" target="_blank">CV</a>
+          <a href="mailto:brbe@uni.gl">Email</a>
+        </div>
       </div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="https://linkedin.com/in/brian-beadle-a6042546">LinkedIn</a></li>
-        <li><a href="CV_042924.pdf" target="_blank">CV</a></li>
-        <li><a href="mailto:brbe@uni.gl">Email</a></li>
-      </ul>
-    </nav> 
-  </header>
+      
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active" onclick="showSection('welcome')">Home</a>
+        <a href="#" class="nav-item" onclick="showSection('education')">Education</a>
+        <a href="#" class="nav-item" onclick="showSection('research')">Research</a>
+        <a href="#" class="nav-item" onclick="showSection('publications')">Publications</a>
+        <a href="#" class="nav-item" onclick="showSection('courses')">Courses</a>
+        <a href="#" class="nav-item" onclick="showSection('tutorials')">Exercises</a>
+      </nav>
+    </aside>
 
-  <main>
-    
-    <section id="tutorials">
-      <h2>Course exercises</h2>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Welcome Section -->
+      <section id="welcome" class="content-section active welcome-section">
+        <h2>Welcome</h2>
+        <p>Explore my academic profile, research projects, publications, and teaching materials. Use the sidebar navigation to browse through different sections of my work in socio-ecological economics.</p>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education" class="content-section">
+        <h2>Education</h2>
+        <h3>PhD Economics <em>(magna cum laude)</em></h3>
+        <p>Martin Luther University Halle-Wittenberg</p>
+        
+        <h3>MSc Socio-Ecological Economics and Policy</h3>
+        <p>Vienna University of Economics and Business</p>
+        
+        <h3>BSc Economics and Business Administration</h3>
+        <p>University of Wisconsin-Stevens Point</p>
+      </section>
+
+      <!-- Research Section -->
+      <section id="research" class="content-section">
+        <h2>Current Research Projects</h2>
+        <p><em>Click on the links to see media and descriptions of my ongoing research</em></p>
+        
+        <h3>1. <a href="research-asia.html" target="_blank">Development of a resilient and sustainable irrigated rice cultivation system</a></h3>
+        
+        <h3>2. <a href="project-iamo.html" target="_blank">Modeling well-being through Bayesian multidimensional item response theory</a></h3>
+        <p>An application of Amartya Sen's capability approach</p>
+      </section>
+
+      <!-- Publications Section -->
+      <section id="publications" class="content-section">
+        <h2>Publications</h2>
+        <iframe src="publications.html" height="450px"></iframe>
+      </section>
+
+      <!-- Courses Section -->
+      <section id="courses" class="content-section">
+        <h2>Courses Taught</h2>
+        <p><em>Click on the links to see syllabi</em></p>
+        <iframe src="courses.html" height="500px"></iframe>
+      </section>
+
+      <!-- Tutorials Section -->
+      <section id="tutorials" class="content-section">
+        <h2>Course Exercises</h2>
         <h3><a href="aem.html" target="_blank">Avanceret økonomisk metode</a></h3>
-    </section> 
+      </section>
 
-    <section id="education">
-      <h2>Education</h2>
-        <h3></h3>
-        <p><b>PhD Economics</b> <i>(magna cum laude)</i>, Martin Luther University Halle-Wittenberg</p>
-        <p><b>MSc Socio-Ecological Economics and Policy</b>, Vienna University of Economics and Business</p>
-        <p><b>BSc Economics and Business Administration</b>, University of Wisconsin-Stevens Point</p>
-    </section>
-    
-    <section id="research">
-      <h2>Current research projects</h2>
-        <p><i>Click on the links to see media and descriptions of my ongoing research</i></p>
-        <p>1. <a href="research-asia.html">Development of a resilient and sustainable irrigated rice cultivation system</a></p>
-        <p>2. <a href="project-iamo.html">Modeling well-being through Bayesian multidimensional item response theory: An application of Amartya Sen's capability approach</a></p>
-    </section>
-    
-    <section id="publications">
-      <h2>Publications</h2>
-      <iframe src="publications.html" width="1000px" height="450px" frameborder="0"></iframe>
-    </section>
+      <!-- Footer -->
+      <footer>
+        <p>&copy; 2025 Brian Beadle. All rights reserved.</p>
+      </footer>
+    </main>
+  </div>
 
-    <section id="courses">
-      <h2>Courses taught</h2>
-      <p><i>Click on the links to see syllabi</i></p>
-      <iframe src="courses.html" width="1000px" height="500px" frameborder="0"></iframe>
-    </section>
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected section
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+      
+      // Update active nav item
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Add active class to clicked nav item
+      event.target.classList.add('active');
+    }
 
-    <!-- section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:bbeadle@northland.edu">bbeadle@northland.edu</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/brian-beadle-a6042546/">https://www.linkedin.com/in/brian-beadle-a6042546/</a></p>
-      <!-- Add more contact information as needed
-    </section> -->
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Brian Beadle. All rights reserved.</p>
-  </footer>
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Ensure welcome section is shown by default
+      showSection('welcome');
+    });
+  </script>
 </body>
 </html>
