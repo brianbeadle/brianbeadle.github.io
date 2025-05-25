@@ -6,83 +6,77 @@
   <title>Dr. Brian Beadle</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* CSS for profile-text */
-    .profile-text {
-      font-size: 1.1em; /* Set font size */
-    }
-    .profile-text h1,
-    .profile-text h3,
-    .profile-text p {
-      margin: 0.2em 0; /* Set equal top and bottom margin, no left and right margin */
-    }
-    .profile-text p {
-      font-size: 1em; /* Set font size smaller for research interests */
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <div class="profile-info">
-      <img src="profile-crop.jpg" alt="Profile Picture" class="profile-pic">
-      <div class="profile-text">
-        <h1>Dr. Brian Beadle</h1>
-        <h3>Socio-Ecological Economist</h3>
-        <p>Research interests: Applied microeconometrics, Bayesian item response modeling, composite indicators,<br>(agricultural) sustainability, subjective well-being</p>
+  <div class="container">
+    <header>
+      <div class="profile-info">
+        <img src="profile-crop.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="profile-text">
+          <h1>Dr. Brian Beadle</h1>
+          <h3>Socio-Ecological Economist</h3>
+          <p>Research interests: Applied microeconometrics, Bayesian item response modeling, composite indicators, (agricultural) sustainability, subjective well-being</p>
+        </div>
       </div>
+    </header>
+
+    <div class="content-wrapper">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="#tutorials">Course Exercises</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#research">Research Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#courses">Courses Taught</a></li>
+            <li><a href="https://linkedin.com/in/brian-beadle-a6042546">LinkedIn</a></li>
+            <li><a href="CV_042924.pdf" target="_blank">CV</a></li>
+            <li><a href="mailto:brbe@uni.gl">Email</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <section id="tutorials">
+          <h2>Course exercises</h2>
+          <h3><a href="aem.html" target="_blank">Avanceret økonomisk metode</a></h3>
+        </section> 
+
+        <section id="education">
+          <h2>Education</h2>
+          <h3></h3>
+          <p><b>PhD Economics</b> <i>(magna cum laude)</i>, Martin Luther University Halle-Wittenberg</p>
+          <p><b>MSc Socio-Ecological Economics and Policy</b>, Vienna University of Economics and Business</p>
+          <p><b>BSc Economics and Business Administration</b>, University of Wisconsin-Stevens Point</p>
+        </section>
+        
+        <section id="research">
+          <h2>Current research projects</h2>
+          <p><i>Click on the links to see media and descriptions of my ongoing research</i></p>
+          <p>1. <a href="research-asia.html">Development of a resilient and sustainable irrigated rice cultivation system</a></p>
+          <p>2. <a href="project-iamo.html">Modeling well-being through Bayesian multidimensional item response theory: An application of Amartya Sen's capability approach</a></p>
+        </section>
+        
+        <section id="publications">
+          <h2>Publications</h2>
+          <div class="iframe-container">
+            <iframe src="publications.html" frameborder="0"></iframe>
+          </div>
+        </section>
+
+        <section id="courses">
+          <h2>Courses taught</h2>
+          <p><i>Click on the links to see syllabi</i></p>
+          <div class="iframe-container">
+            <iframe src="courses.html" frameborder="0"></iframe>
+          </div>
+        </section>
+      </main>
     </div>
-    <nav>
-      <ul>
-        <li><a href="https://linkedin.com/in/brian-beadle-a6042546">LinkedIn</a></li>
-        <li><a href="CV_042924.pdf" target="_blank">CV</a></li>
-        <li><a href="mailto:brbe@uni.gl">Email</a></li>
-      </ul>
-    </nav> 
-  </header>
 
-  <main>
-    
-    <section id="tutorials">
-      <h2>Course exercises</h2>
-        <h3><a href="aem.html" target="_blank">Avanceret økonomisk metode</a></h3>
-    </section> 
-
-    <section id="education">
-      <h2>Education</h2>
-        <h3></h3>
-        <p><b>PhD Economics</b> <i>(magna cum laude)</i>, Martin Luther University Halle-Wittenberg</p>
-        <p><b>MSc Socio-Ecological Economics and Policy</b>, Vienna University of Economics and Business</p>
-        <p><b>BSc Economics and Business Administration</b>, University of Wisconsin-Stevens Point</p>
-    </section>
-    
-    <section id="research">
-      <h2>Current research projects</h2>
-        <p><i>Click on the links to see media and descriptions of my ongoing research</i></p>
-        <p>1. <a href="research-asia.html">Development of a resilient and sustainable irrigated rice cultivation system</a></p>
-        <p>2. <a href="project-iamo.html">Modeling well-being through Bayesian multidimensional item response theory: An application of Amartya Sen's capability approach</a></p>
-    </section>
-    
-    <section id="publications">
-      <h2>Publications</h2>
-      <iframe src="publications.html" width="1000px" height="450px" frameborder="0"></iframe>
-    </section>
-
-    <section id="courses">
-      <h2>Courses taught</h2>
-      <p><i>Click on the links to see syllabi</i></p>
-      <iframe src="courses.html" width="1000px" height="500px" frameborder="0"></iframe>
-    </section>
-
-    <!-- section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:bbeadle@northland.edu">bbeadle@northland.edu</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/brian-beadle-a6042546/">https://www.linkedin.com/in/brian-beadle-a6042546/</a></p>
-      <!-- Add more contact information as needed
-    </section> -->
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Brian Beadle. All rights reserved.</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Brian Beadle. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
