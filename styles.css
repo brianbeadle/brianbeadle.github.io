@@ -69,6 +69,7 @@ header {
   padding: 2rem;
   background-color: var(--white);
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
 }
 
 .profile-pic {
@@ -108,8 +109,12 @@ header {
   color: var(--light-gray);
 }
 
-section {
-  margin-bottom: 2.5rem;
+.content-section {
+  display: none; /* All sections hidden by default */
+}
+
+.content-section.default-section {
+  display: block; /* Only welcome section visible initially */
 }
 
 h2 {
@@ -178,5 +183,6 @@ footer {
   
   .main-content {
     padding: 1.5rem;
+    min-height: auto;
   }
 }
