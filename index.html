@@ -24,11 +24,11 @@
       <aside class="sidebar">
         <nav>
           <ul>
-            <li><a href="#tutorials">Course Exercises</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#research">Research Projects</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#courses">Courses Taught</a></li>
+            <li><a href="#" data-section="tutorials">Course Exercises</a></li>
+            <li><a href="#" data-section="education">Education</a></li>
+            <li><a href="#" data-section="research">Research Projects</a></li>
+            <li><a href="#" data-section="publications">Publications</a></li>
+            <li><a href="#" data-section="courses">Courses Taught</a></li>
             <li><a href="https://linkedin.com/in/brian-beadle-a6042546">LinkedIn</a></li>
             <li><a href="CV_042924.pdf" target="_blank">CV</a></li>
             <li><a href="mailto:brbe@uni.gl">Email</a></li>
@@ -37,39 +37,44 @@
       </aside>
 
       <main class="main-content">
-        <section id="tutorials">
+        <section id="tutorials" class="content-section">
           <h2>Course exercises</h2>
           <h3><a href="aem.html" target="_blank">Avanceret økonomisk metode</a></h3>
         </section> 
 
-        <section id="education">
+        <section id="education" class="content-section">
           <h2>Education</h2>
-          <h3></h3>
           <p><b>PhD Economics</b> <i>(magna cum laude)</i>, Martin Luther University Halle-Wittenberg</p>
           <p><b>MSc Socio-Ecological Economics and Policy</b>, Vienna University of Economics and Business</p>
           <p><b>BSc Economics and Business Administration</b>, University of Wisconsin-Stevens Point</p>
         </section>
         
-        <section id="research">
+        <section id="research" class="content-section">
           <h2>Current research projects</h2>
           <p><i>Click on the links to see media and descriptions of my ongoing research</i></p>
           <p>1. <a href="research-asia.html">Development of a resilient and sustainable irrigated rice cultivation system</a></p>
           <p>2. <a href="project-iamo.html">Modeling well-being through Bayesian multidimensional item response theory: An application of Amartya Sen's capability approach</a></p>
         </section>
         
-        <section id="publications">
+        <section id="publications" class="content-section">
           <h2>Publications</h2>
           <div class="iframe-container">
             <iframe src="publications.html" frameborder="0"></iframe>
           </div>
         </section>
 
-        <section id="courses">
+        <section id="courses" class="content-section">
           <h2>Courses taught</h2>
           <p><i>Click on the links to see syllabi</i></p>
           <div class="iframe-container">
             <iframe src="courses.html" frameborder="0"></iframe>
           </div>
+        </section>
+
+        <!-- Default visible section -->
+        <section id="welcome" class="content-section default-section">
+          <h2>Welcome</h2>
+          <p>Please select a section from the navigation menu to view content.</p>
         </section>
       </main>
     </div>
@@ -78,5 +83,34 @@
       <p>&copy; 2025 Brian Beadle. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hide all content sections except welcome
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => {
+        if (!section.classList.contains('default-section')) {
+          section.style.display = 'none';
+        }
+      });
+
+      // Set up navigation click handlers
+      const navLinks = document.querySelectorAll('.sidebar a[data-section]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Hide all sections
+          sections.forEach(section => {
+            section.style.display = 'none';
+          });
+          
+          // Show the selected section
+          const sectionId = this.getAttribute('data-section');
+          document.getElementById(sectionId).style.display = 'block';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
