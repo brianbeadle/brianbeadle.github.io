@@ -1,0 +1,45 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Add copy buttons to all code blocks
+  const codeBlocks = document.querySelectorAll('pre');
+  
+  codeBlocks.forEach(block => {
+    // Skip blocks that are output or don't contain code
+    if (block.classList.contains('output') || !block.querySelector('code')) {
+      return;
+    }
+    
+    // Create copy button
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.title = 'Copy to clipboard';
+    
+    // Position button
+    block.style.position = 'relative';
+    button.style.position = 'absolute';
+    button.style.top = '5px';
+    button.style.right = '5px';
+    button.style.padding = '2px 5px';
+    button.style.fontSize = '0.8em';
+    button.style.backgroundColor = '#f5f5f5';
+    button.style.border = '1px solid #ccc';
+    button.style.borderRadius = '3px';
+    button.style.cursor = 'pointer';
+    
+    // Add button to block
+    block.appendChild(button);
+    
+    // Add click event
+    button.addEventListener('click', () => {
+      const code = block.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      });
+    });
+  });
+});
+</script>
