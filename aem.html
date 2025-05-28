@@ -6,33 +6,21 @@
   <title>Exercises</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-  body {
-    margin: 0;
-    font-family: sans-serif;
+    /* CSS for image container */
+    .image-container {
+      overflow-x: auto; /* Enable horizontal scrolling */
+      white-space: nowrap; /* Prevent wrapping of images */
+    }
+    .image-container img {
+      display: inline-block; /* Display images inline */
+      max-height: 250px; /* Set maximum height for images */
+      height: auto; /* Maintain aspect ratio */
+      margin-right: 10px; /* Add space between images */
+    }
+    #description {
+  padding-left: 30px; /* Adjust the value as needed */
   }
-
-  header, footer {
-    background-color: #f0f0f0; /* Example color */
-    padding: 1em;
-  }
-
-  main {
-    padding-left: 20px;
-    padding-right: 10px;
-  }
-
-  .image-container {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .image-container img {
-    display: inline-block;
-    max-height: 250px;
-    height: auto;
-    margin-right: 10px;
-  }
-</style>
+  </style>
 </head>
 <body>
   <header>
