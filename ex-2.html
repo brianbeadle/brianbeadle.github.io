@@ -7,7 +7,7 @@
 
         <meta name="author" content="Brian Beadle" />
     
-        <meta name="date" content="2025-09-05" />
+        <meta name="date" content="2025-09-16" />
     
     <title>Advanced Economic Methods</title>
 
@@ -1518,7 +1518,7 @@ margin-left: 0 !important;
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> Brian
 Beadle</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-09-05</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-09-16</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -1552,37 +1552,38 @@ textbook.</p>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
 <p>Open a new R script and write your header so it can be quickly
-identified later. Since we have already installed some libraries in the
-last lesson, we can begin the script by clearing the environment (good
-practice at the start of every new script) and loading the libraries. I
-usually create sections by commenting out a line and labeling it, and I
-usually group the clear command in with the libraries since it is all a
-standard part of the setup. The beginning of your script should look
-something like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="do">###########################################################################</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># Project: Multicollinearity</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co"># Author: [Your name]</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># Date: [Today&#39;s date]</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="do">###########################################################################</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co"># Clear environment and load libraries</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+identified later. We need to install a new package called
+<code>dplyr</code> that we will use primarily for some data
+organization. Copy the following code into the command line in the
+bottom left corner (not in your script) and hit enter:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<p>We have already gone through the opening commands for your document
+in the first lesson. The beginning of your script should look something
+like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">###########################################################################</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># Project: Multicollinearity</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># Author: [Your name]</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Date: [Today&#39;s date]</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="do">###########################################################################</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># Clear environment and load libraries</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>Now we can set the working drive and load the data. Following the
 exercise in the book, we will use UK economic data.This data has two
 rows of labels at the top of the file, so we will skip the first row and
 use the labels from the second row.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Set working drive</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Projects/applied-econometrics/R&quot;</span>) <span class="co"># Replace with your directory path</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;dat/imports_uk.xls&quot;</span>, <span class="at">skip =</span> <span class="dv">1</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Set working drive</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Projects/applied-econometrics/R&quot;</span>) <span class="co"># Replace with your directory path</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;dat/imports_uk.xls&quot;</span>, <span class="at">skip =</span> <span class="dv">1</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## New names:
 ## • `` -&gt; `...1`</code></pre>
 <p>Let’s have a quick look at the data to see what we are working
 with.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   ...1  Imports   GDP   CPI   RPI
 ##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1595,8 +1596,8 @@ with.</p>
 <p>We will not need the column titled “…1”. It is a time identifier that
 will not be used, so let’s just remove it to make the data set easier to
 work with</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">&quot;...1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">&quot;...1&quot;</span>)</span></code></pre></div>
 </div>
 <div id="analysis" class="section level1">
 <h1>Analysis</h1>
@@ -1606,25 +1607,32 @@ there are some missing values in the data set, so we will add the option
 <code>use = &quot;pairwise.complete.obs&quot;</code> because it will use all
 available data for each pair of variables instead of dropping entire
 rows with any missing value</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">cor</span>(d, <span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">cor</span>(d, <span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span></code></pre></div>
 <pre><code>##           Imports       GDP       CPI       RPI
 ## Imports 1.0000000 0.9874500 0.8771250 0.9551633
 ## GDP     0.9874500 1.0000000 0.8795169 0.9667326
 ## CPI     0.8771250 0.8795169 1.0000000 0.9907019
 ## RPI     0.9551633 0.9667326 0.9907019 1.0000000</code></pre>
-<p>Correlation coefficients have a range of 0-1, with 0 meaning no
-correlation at all and 1 meaning perfect correlation. We can see from
-the results that all these variables have very high correlation, which
-makes it quite clear that multicollinearity will be an issue in any
-regressions we run on the data.</p>
+<p>Correlation coefficients have a range of -1 to 1, with 0 meaning no
+correlation at all, -1 meaning a perfect negative correlation (e.g. a
+1-unit increase in variable A corresponds to a 1-unit decrease in
+variable B), and 1 meaning a perfect positive correlation. We can see
+from the results that all these variables have very high correlation,
+which makes it quite clear that multicollinearity will be an issue in
+any regressions we run on the data.</p>
 <p>To demonstrate why this correlation might cause problems, we will now
 run a set of regressions to see what happens when we modify the
 variables in the regression. The first model will be run using the log
 of <code>Imports</code> as the dependent variable and the logs of
 <code>GDP</code> and <code>CPI</code> as independent variables.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP) <span class="sc">+</span> <span class="fu">log</span>(CPI), <span class="at">data =</span> d)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
+<p>Note that I am writing the regression to an object called
+<code>reg1</code>. The output provided when running this command without
+storing as an object does not provide the appropriate summary
+statistics, so we will use the <code>summary()</code> command after
+running the regression to view the results.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP) <span class="sc">+</span> <span class="fu">log</span>(CPI), <span class="at">data =</span> d)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Imports) ~ log(GDP) + log(CPI), data = d)
@@ -1646,13 +1654,13 @@ of <code>Imports</code> as the dependent variable and the logs of
 ## Multiple R-squared:  0.9778, Adjusted R-squared:  0.9768 
 ## F-statistic: 969.9 on 2 and 44 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We can see that we have a high R-squared, GDP has a relatively high
-coefficient with strong statistical significance (very low p-value), and
-CPI is barely statistically significant (p = 0.0381).</p>
+coefficient with strong statistical significance (i.e. very low
+p-value), and CPI is barely statistically significant (p = 0.0381).</p>
 <p>Now we will run another regression but add in the PPI variable, as
 such</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP) <span class="sc">+</span> <span class="fu">log</span>(CPI) <span class="sc">+</span> <span class="fu">log</span>(RPI), <span class="at">data =</span> d)</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP) <span class="sc">+</span> <span class="fu">log</span>(CPI) <span class="sc">+</span> <span class="fu">log</span>(RPI), <span class="at">data =</span> d)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Imports) ~ log(GDP) + log(CPI) + log(RPI), data = d)
@@ -1682,9 +1690,9 @@ in coefficients and significance is a classic sign of multicollinearity:
 the independent variables are highly correlated, making it hard for the
 model to isolate their individual effects. Let’s run the model again
 without CPI in the mix</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP) <span class="sc">+</span> <span class="fu">log</span>(RPI), <span class="at">data =</span> d)</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP) <span class="sc">+</span> <span class="fu">log</span>(RPI), <span class="at">data =</span> d)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Imports) ~ log(GDP) + log(RPI), data = d)
@@ -1709,11 +1717,39 @@ without CPI in the mix</p>
 small and not statistically significant. This pattern confirms that
 multicollinearity is affecting the regression: the estimated
 coefficients change dramatically depending on which correlated variables
-are included. The easiest way to address this is to simply drop one of
-the highly correlated variables, since including all of them does not
-provide additional useful information. Other methods, such as combining
-variables into an index, are available but are not covered in this
-exercise.</p>
+are included.</p>
+<p>The easiest way to solve this problem is to simply drop one of the
+highly correlated variables. Including all of them does not provide
+additional useful information. Since GDP has had strong metrics that
+were relatively stable across the regressions and the others created
+problems, I would suggest running a regression with only GDP:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP), <span class="at">data =</span> d)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">summary</span>(reg4)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(Imports) ~ log(GDP), data = d)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.066117 -0.024121 -0.001085  0.024499  0.076025 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1.18858    0.12601   9.432  2.9e-14 ***
+## log(GDP)     2.10230    0.02821  74.519  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.03312 on 73 degrees of freedom
+##   (25 observations deleted due to missingness)
+## Multiple R-squared:  0.987,  Adjusted R-squared:  0.9868 
+## F-statistic:  5553 on 1 and 73 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>These results are now pretty good, so we can stop with this. Other
+methods are available to include the other variables. You could, as
+examples, create a new variable that is the ratio of GDP to CPI, or
+create a composite variable that aggregates some or all of the X
+variables.</p>
 </div>
 
    
