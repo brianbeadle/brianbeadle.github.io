@@ -7,7 +7,7 @@
 
         <meta name="author" content="Brian Beadle" />
     
-        <meta name="date" content="2025-09-16" />
+        <meta name="date" content="2025-09-18" />
     
     <title>Advanced Economic Methods</title>
 
@@ -1518,7 +1518,7 @@ margin-left: 0 !important;
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> Brian
 Beadle</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-09-16</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-09-18</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -1551,15 +1551,16 @@ textbook.</p>
 </div>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
-<p>Open a new R script and write your header so it can be quickly
-identified later. We need to install a new package called
-<code>dplyr</code> that we will use primarily for some data
-organization. Copy the following code into the command line in the
-bottom left corner (not in your script) and hit enter:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<p>We have already gone through the opening commands for your document
-in the first lesson. The beginning of your script should look something
-like this:</p>
+<p>We need to install two new packages called <code>dplyr</code> and
+<code>car</code>. The first helps with a wide range of data organization
+tasks, and the second is used to estimate a variance inflation factor
+(VIF). Copy the following code into the command line in the bottom left
+corner (not in your script) and hit enter:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;car&quot;</span>))</span></code></pre></div>
+<p>Now create a new R script and add the header like we did in the first
+lesson. Then clear the environment and add the packages we will need for
+this analysis. The beginning of your script should look something like
+this:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">###########################################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># Project: Multicollinearity</span></span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># Author: [Your name]</span></span>
@@ -1569,7 +1570,8 @@ like this:</p>
 <span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># Clear environment and load libraries</span></span>
 <span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
 <span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
 <p>Now we can set the working drive and load the data. Following the
 exercise in the book, we will use UK economic data.This data has two
 rows of labels at the top of the file, so we will skip the first row and
@@ -1717,15 +1719,20 @@ without CPI in the mix</p>
 small and not statistically significant. This pattern confirms that
 multicollinearity is affecting the regression: the estimated
 coefficients change dramatically depending on which correlated variables
-are included.</p>
-<p>The easiest way to solve this problem is to simply drop one of the
-highly correlated variables. Including all of them does not provide
-additional useful information. Since GDP has had strong metrics that
-were relatively stable across the regressions and the others created
-problems, I would suggest running a regression with only GDP:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP), <span class="at">data =</span> d)</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">summary</span>(reg4)</span></code></pre></div>
+are included. We can also run a VIF test to verify the issue:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">vif</span>(reg3)</span></code></pre></div>
+<pre><code>## log(GDP) log(RPI) 
+## 14.10901 14.10901</code></pre>
+<p>With a VIF &gt; 14, we know for sure that multicollinearity is a
+problem in the model. The easiest way to solve this problem is to simply
+drop one of the highly correlated variables. Including all of them does
+not provide additional useful information. Since GDP has had strong
+metrics that were relatively stable across the regressions and the
+others created problems, I would suggest running a regression with only
+GDP:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Imports) <span class="sc">~</span> <span class="fu">log</span>(GDP), <span class="at">data =</span> d)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">summary</span>(reg4)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Imports) ~ log(GDP), data = d)
