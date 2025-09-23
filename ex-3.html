@@ -7,7 +7,7 @@
 
         <meta name="author" content="Brian Beadle" />
     
-        <meta name="date" content="2025-09-22" />
+        <meta name="date" content="2025-09-23" />
     
     <title>Advanced Economic Methods</title>
 
@@ -1360,9 +1360,8 @@ src: url(data:font/ttf;base64,AAEAAAARAQAABAAQR0RFRgs+Cz8AAjwQAAAAQEdQT1MXWeoAAA
     
         <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1373,7 +1372,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1531,14 +1530,21 @@ margin-left: 0 !important;
           <li><a href="#auxiliary-regression" id="toc-auxiliary-regression">Auxiliary regression</a></li>
           <li><a href="#bp-test" id="toc-bp-test">BP test</a></li>
           </ul></li>
-          <li><a href="#solution" id="toc-solution">Solution</a></li>
+          <li><a href="#solution" id="toc-solution">Solution</a>
+          <ul>
+          <li><a href="#whites-corrected-standard-error-estimates" id="toc-whites-corrected-standard-error-estimates">White’s
+          corrected standard error estimates</a></li>
+          <li><a href="#confidence-intervals" id="toc-confidence-intervals">Confidence intervals</a></li>
+          <li><a href="#to-summarize" id="toc-to-summarize">To
+          summarize</a></li>
+          </ul></li>
           </ul>
         </nav>
         <ul class="authors">
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> Brian
 Beadle</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-09-22</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-09-23</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -1780,6 +1786,8 @@ homoskedasticity and conclude that heteroskedasticity is present.</p>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
+<div id="whites-corrected-standard-error-estimates" class="section level2">
+<h2>White’s corrected standard error estimates</h2>
 <p>Since we know that heteroskedasticity is present in the data, we can
 run a correction that will adjust the standard errors and produce more
 robust results. Following the textbook, we will obtain White’s corrected
@@ -1798,48 +1806,38 @@ errors.</p>
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We can see that while the regression coefficients are the same in
 both models, the standard errors differ between the corrected and
-uncorrected versions. To see how this translates to the performance and
-accuracy of the model, we can compare the confidence intervals of the
-two models. We calculate this using the same equation from the lecture,
-which is specified as:</p>
-<p><span class="math display">\[CI = \beta \pm z_{\alpha/2} \times
-SE(\beta)\]</span></p>
-<p>where <span class="math inline">\(CI\)</span> is the confidence
-interval, <span class="math inline">\(\beta\)</span> is the predicted
-value of the regression coefficient, <span class="math inline">\(z_{\alpha/2}\)</span> is the critical value from
-the standard normal distribution (Z-distribution), and <span class="math inline">\(SE(\beta)\)</span> is the standard error of the
-regression coefficient. We will again obtain the value for <span class="math inline">\(z_{\alpha/2}\)</span> from the T-value table <a href="https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf">here</a>
-using a 2-tail test with 80 degrees of freedom (closest in the
-table):</p>
-<div id="corrected-model-confidence-intervals" class="section level3">
-<h3>Corrected model confidence intervals</h3>
-<p>Rooms:</p>
-<p><span class="math display">\[15198.191 ± (1.99 × 8943.735) =
-15198.191 ± 17798.03 = [-2,599.84, 32,996.22]\]</span></p>
-<p>Sqfeet:</p>
-<p><span class="math display">\[128.436 ± (1.99 × 19.591) = 128.436 ±
-38.99 = [89.45, 167.42]\]</span></p>
+uncorrected versions.</p>
 </div>
-<div id="original-model-confidence-intervals" class="section level3">
-<h3>Original Model Confidence Intervals</h3>
-<p>Rooms:</p>
-<p><span class="math display">\[15198.19 ± (1.99 × 9483.52) = 15198.19 ±
-18872.20 = [-3,674.01, 34,070.39]\]</span></p>
-<p>Sqfeet:</p>
-<p><span class="math display">\[128.44 ± (1.99 × 13.82) = 128.44 ± 27.50
-= [100.94, 155.94]\]</span></p>
+<div id="confidence-intervals" class="section level2">
+<h2>Confidence intervals</h2>
+<p>To see how this translates to the performance and accuracy of the
+model, we can compare the confidence intervals of the two models. We
+calculate these using the <code>confint()</code> command for the first
+regression:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">confint</span>(reg1)</span></code></pre></div>
+<pre><code>##                   2.5 %     97.5 %
+## (Intercept) -81043.9930 42414.0006
+## rooms        -3657.5815 34053.9636
+## sqfeet         100.9495   155.9229</code></pre>
+<p>For the second regression, we just have to change
+<code>coeftest()</code> to <code>coefci()</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">coefci</span>(reg1, <span class="at">vcov. =</span> <span class="fu">vcovHC</span>(reg1, <span class="at">type =</span> <span class="st">&quot;HC1&quot;</span>))</span></code></pre></div>
+<pre><code>##                     2.5 %     97.5 %
+## (Intercept) -101868.88058 63238.8881
+## rooms         -2584.34944 32980.7316
+## sqfeet           89.48427   167.3882</code></pre>
 </div>
-<div id="to-summarize" class="section level3">
-<h3>To summarize</h3>
+<div id="to-summarize" class="section level2">
+<h2>To summarize</h2>
 <p>The comparison of confidence intervals reveals an important insight
 about heteroskedasticity correction: the goal is not to uniformly
 improve precision, but to obtain accurate standard errors. In our
 analysis, the White correction affected each variable differently. For
 the <code>rooms</code> coefficient, the correction slightly narrowed the
-confidence interval from 37,744.40 to 35,596.06 units wide, suggesting
+confidence interval from 37,711.55 to 35,565.08 units wide, suggesting
 the original model was overestimating uncertainty for this variable.
 Conversely, for the <code>sqfeet</code> coefficient, the correction
-widened the confidence interval from 55.00 to 77.97 units wide,
+widened the confidence interval from 54.97 to 77.90 units wide,
 indicating the original model was underestimating uncertainty. This
 demonstrates that heteroskedasticity correction provides more reliable
 inference by adjusting standard errors to reflect the true variability
