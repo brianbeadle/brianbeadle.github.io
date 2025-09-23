@@ -1525,11 +1525,7 @@ margin-left: 0 !important;
           <li><a href="#price-and-size-in-square-feet" id="toc-price-and-size-in-square-feet">Price and size (in
           square feet)</a></li>
           </ul></li>
-          <li><a href="#breusch-pagan-test" id="toc-breusch-pagan-test">Breusch-Pagan test</a>
-          <ul>
-          <li><a href="#auxiliary-regression" id="toc-auxiliary-regression">Auxiliary regression</a></li>
-          <li><a href="#bp-test" id="toc-bp-test">BP test</a></li>
-          </ul></li>
+          <li><a href="#breusch-pagan-test" id="toc-breusch-pagan-test">Breusch-Pagan test</a></li>
           <li><a href="#solution" id="toc-solution">Solution</a>
           <ul>
           <li><a href="#whites-corrected-standard-error-estimates" id="toc-whites-corrected-standard-error-estimates">White’s
@@ -1738,51 +1734,25 @@ test this assumption, we will proceed to statistical testing.</p>
 </div>
 <div id="breusch-pagan-test" class="section level1">
 <h1>Breusch-Pagan test</h1>
-<div id="auxiliary-regression" class="section level2">
-<h2>Auxiliary regression</h2>
-<p>We want to extract the residuals from the regression, which are the
-differences between the values predicted by the model and the observed
-values in the data set for each observation. The residuals are part of
-the object <code>reg1</code>, and we will create a new object for the
-residuals called <code>ut</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>ut <span class="ot">&lt;-</span> <span class="fu">residuals</span>(reg1)</span></code></pre></div>
-<p>We now have to square the residuals as: <span class="math inline">\(utsq = ut^2\)</span>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>utsq <span class="ot">&lt;-</span> ut<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
-<p>The next step is to run an auxiliary regression with
-<code>utsq</code> as the dependent variable, and <code>rooms</code> and
-<code>sqfeet</code> as the independent variables. The generic model
-statement for the auxiliary regression is:</p>
-<p><span class="math display">\[\hat{ut^2_t} = a_0 + a_1 Z_{1t} + a_2
-Z_{2t} + ... + a_p Z_{pt} + v\]</span></p>
-<p>This has the same structure as a standard regression, but with
-squared residuals as the dependent variable. We use <span class="math inline">\(a\)</span> instead of <span class="math inline">\(\beta\)</span> to make it clear these are new
-coefficients.</p>
-<p>We can make this easier to understand by simply imputing our
-variables into the model</p>
-<p><span class="math display">\[\hat{ut^2_t} = a_0 + a_1 rooms_{1t} +
-a_2 sqfeet_{2t} + v\]</span></p>
-<p>The code for this regression is almost identical to the first, we
-just replace <code>price</code> with <span class="math inline">\(ut^2\)</span>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(utsq <span class="sc">~</span> rooms <span class="sc">+</span> sqfeet, <span class="at">data =</span> d)</span></code></pre></div>
-<p>We do not need to look at the full regression output
-(<code>summary(reg2)</code>), because the coefficients are not directly
-meaningful here. The only value we need is <span class="math inline">\(R^2\)</span>, which we extract in the next
-step.</p>
-</div>
-<div id="bp-test" class="section level2">
-<h2>BP test</h2>
-<p>The next step is the formal Breusch–Pagan test. The
-<code>bptest()</code> function from the <code>lmtest</code> package runs
-this test directly by reporting the LM statistic and the p-value. If the
-p-value is small (e.g., below 0.05), we reject the null hypothesis of
-homoskedasticity and conclude that heteroskedasticity is present.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">bptest</span>(reg1)</span></code></pre></div>
+<p>This next line saves a considerable amount of time, as there is a lot
+going on under the hood. Here is a step-by-step of what it does:</p>
+<ul>
+<li>Extracts the residuals from <code>reg1</code> and squares them,</li>
+<li>Runs an auxiliary regression as <span class="math inline">\(\hat{u^2_t} = a_0 + a_1 rooms_{t} + a_2 sqfeet_{t}
++ v\)</span></li>
+<li>Generates an LM statistic and compares it with a critical <span class="math inline">\(\chi^2\)</span> value</li>
+</ul>
+<p>The <code>bptest()</code> function from the <code>lmtest</code>
+package runs this test directly by reporting the LM statistic and the
+p-value. If the p-value is small (e.g., below 0.05), we reject the null
+hypothesis of homoskedasticity and conclude that heteroskedasticity is
+present.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">bptest</span>(reg1)</span></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
 ## data:  reg1
 ## BP = 10.576, df = 2, p-value = 0.005051</code></pre>
-</div>
 </div>
 <div id="solution" class="section level1">
 <h1>Solution</h1>
@@ -1794,7 +1764,7 @@ robust results. Following the textbook, we will obtain White’s corrected
 standard error estimates, which will use our first regression. This will
 keep the regression coefficients constant and simply adjust the standard
 errors.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">coeftest</span>(reg1, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(reg1, <span class="at">type =</span> <span class="st">&quot;HC1&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">coeftest</span>(reg1, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(reg1, <span class="at">type =</span> <span class="st">&quot;HC1&quot;</span>))</span></code></pre></div>
 <pre><code>## 
 ## t test of coefficients:
 ## 
@@ -1814,14 +1784,14 @@ uncorrected versions.</p>
 model, we can compare the confidence intervals of the two models. We
 calculate these using the <code>confint()</code> command for the first
 regression:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">confint</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">confint</span>(reg1)</span></code></pre></div>
 <pre><code>##                   2.5 %     97.5 %
 ## (Intercept) -81043.9930 42414.0006
 ## rooms        -3657.5815 34053.9636
 ## sqfeet         100.9495   155.9229</code></pre>
 <p>For the second regression, we just have to change
 <code>coeftest()</code> to <code>coefci()</code>:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">coefci</span>(reg1, <span class="at">vcov. =</span> <span class="fu">vcovHC</span>(reg1, <span class="at">type =</span> <span class="st">&quot;HC1&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">coefci</span>(reg1, <span class="at">vcov. =</span> <span class="fu">vcovHC</span>(reg1, <span class="at">type =</span> <span class="st">&quot;HC1&quot;</span>))</span></code></pre></div>
 <pre><code>##                     2.5 %     97.5 %
 ## (Intercept) -101868.88058 63238.8881
 ## rooms         -2584.34944 32980.7316
