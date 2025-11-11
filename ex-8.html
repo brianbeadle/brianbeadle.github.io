@@ -7,7 +7,7 @@
 
         <meta name="author" content="Brian Beadle" />
     
-        <meta name="date" content="2025-11-10" />
+        <meta name="date" content="2025-11-11" />
     
     <title>Advanced Economic Methods</title>
 
@@ -1542,7 +1542,7 @@ margin-left: 0 !important;
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> Brian
 Beadle</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-11-10</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2025-11-11</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -1580,11 +1580,12 @@ set up the appropriate working paths for the code to work.</p>
 <p>Start a new script file and add your header and the appropriate
 libraries. The data set is a <code>.csv</code> file so base
 <code>R</code> can open the file. We will use the <code>dplyr</code>
-package for data organization, the <code>car</code> package for a few
-basic help functions in our regressions, and the <code>plm</code>
-package to run panel regressions. You can install the latter package by
-copying and pasting <code>install.packages(&quot;plm&quot;)</code> into your
-console and hitting enter.</p>
+package for data organization, the <code>car</code> and
+<code>lmtest</code> packages for a few basic help functions in our
+regressions, and the <code>plm</code> package to run panel regressions.
+You can install the latter package by copying and pasting
+<code>install.packages(&quot;plm&quot;)</code> into your console and hitting
+enter.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="do">###########################################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># Project: Cross-section and panel models</span></span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co"># Author: [Your name]</span></span>
@@ -1597,10 +1598,9 @@ console and hitting enter.</p>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co"># Set working drive</span></span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Projects/applied-econometrics/R&quot;</span>) <span class="co"># Replace with your directory path</span></span></code></pre></div>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co"># Set working drive</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Projects/applied-econometrics/R&quot;</span>) <span class="co"># Replace with your directory path</span></span></code></pre></div>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
