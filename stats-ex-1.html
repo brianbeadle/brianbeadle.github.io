@@ -7,7 +7,7 @@
 
         <meta name="author" content="Brian Beadle" />
     
-        <meta name="date" content="2026-01-28" />
+        <meta name="date" content="2026-02-10" />
     
     <title>Statistics</title>
 
@@ -1514,13 +1514,14 @@ margin-left: 0 !important;
           <li><a href="#installing-and-using-r-and-rstudio" id="toc-installing-and-using-r-and-rstudio">Installing and
           using <code>R</code> and <code>RStudio</code></a></li>
           <li><a href="#starting-your-script" id="toc-starting-your-script">Starting your script</a></li>
+          <li><a href="#finished" id="toc-finished">Finished!</a></li>
           </ul>
         </nav>
         <ul class="authors">
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> Brian
 Beadle</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2026-01-28</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2026-02-10</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -1534,7 +1535,8 @@ Beadle</span></li>
    
         
       <h1 class="title">Statistics</h1>
-         <h1 class="subtitle">Exercise 1: Intro to R</h1>
+         <h1 class="subtitle">Exercise 1: File structure, installing R,
+and basic commands</h1>
    
         
 
@@ -1547,11 +1549,23 @@ Beadle</span></li>
 <p>Welcome to the course! This is the first lesson in a series designed
 to teach you how to do basic programming in <code>R</code> such as
 generating summary statistics and plots, and basic linear regression
-models. This document is divided into sections that first introduce you
-to the layout of <code>RStudio</code>, outline the file layout we will
-use to ensure that the code can be copy/pasted into your own files to
-make the lessons run smoothly, and show you the first steps to setting
-up and running code.</p>
+models. This document is dedicated primarily to helping you install
+<code>R</code>, and is broken up into three sections:</p>
+<ul>
+<li>First, I will show you the structure of the directory that we should
+all use for class. This is important, as it will allow you to copy/paste
+code from these lessons into your own script files, and will allow me to
+run the code you generate for your assignments without any snags.</li>
+<li>Second, I will provide you with all the information you need to
+install <code>R</code> and <code>RStudio</code>. They are separate
+programs, and both are necessary to complete the assignments.</li>
+<li>Finally, I will give you a basic introduction to the layout of
+<code>RStudio</code> so you can familiarize yourself to the program.
+This section will also introduce you to some of the essential
+programming that you will have to do every time you start a new project,
+such as creating a header to label your work, installing and loading
+libraries, and setting your working directory.</li>
+</ul>
 </div>
 <div id="file-organization" class="section level1">
 <h1>File organization</h1>
@@ -1565,8 +1579,7 @@ and <em>results</em> (store your plots and regression results here). The
 file structure should look like this:</p>
 <pre><code>R/
 ├── cmd/       # code files
-├── dat/       # data files
-└── results/   # plots and regression outputs</code></pre>
+└── dat/       # data files </code></pre>
 <p>Data files will be provided on the same page on my website as the
 tutorials. From there, you can download them and place in the
 <code>dat</code> folder.</p>
@@ -1624,9 +1637,11 @@ run correctly if you are running multiple scripts while <code>R</code>
 is open.</li>
 </ul>
 <p>Below is an example script header. Copy/paste it into the top of your
-script file and change the details to fit your project.</p>
+script file and change the details to fit your project. Since we will
+start with the actual programming next week, we will preemptively name
+this file as <em>Generating descriptive statistics</em></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">###########################################################################</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># Project: Introduction to R</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># Project: Generating descriptive statistics</span></span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># Author: [Your name]</span></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Date: [Today&#39;s date]</span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="do">###########################################################################</span></span></code></pre></div>
@@ -1642,9 +1657,13 @@ have never used before. Since this is your first time using
 throughout the course.</p>
 <p>Run the following code to install <code>readxl</code> (for reading
 Excel files), along with other essential packages for importing,
-organizing, and plotting data. Since you only need to run it once, I
-would suggest running it in your console rather than keeping it in the
-script file.</p>
+organizing, and plotting data.</p>
+<p><strong>Important:</strong> Since you only need to run the
+<code>install.packages</code> command once for any given package, run
+this command directly in your console (bottom left panel) rather than
+keeping it in the script file. If you save it to your script file, then
+<code>R</code> will get crabby when it tries to install a package that
+is already installed.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Install packages (only run this once)</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;readxl&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>))</span></code></pre></div>
 <p>What each package does:</p>
@@ -1665,9 +1684,6 @@ science, including:
 <li><strong>ggplot2</strong>: A powerful system for creating
 publication-quality graphics.</li>
 </ul>
-<p>*Note: if you chose to run the Stata files provided by the textbook,
-you will also have to install and load the <code>haven</code>
-package.</p>
 <p>The packages are now permanently saved to your library. However, you
 will have to call them every time you start a new session. Place the
 code below after the line that clears the environment:</p>
@@ -1688,6 +1704,31 @@ generic filepath example that you can modify to fit the location of your
 <code>R</code> folder:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Projects/applied-econometrics/R&quot;</span>)</span></code></pre></div>
 </div>
+<div id="your-final-script-file-so-far" class="section level3">
+<h3>Your final script file (so far)</h3>
+<p>After all these aforementioned steps, you should have a script file
+that looks like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">###########################################################################</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># Project: Generating descriptive statistics</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># Author: [Your name]</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># Date: [Today&#39;s date]</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="do">###########################################################################</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># Clearing environment</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co"># Loading packages</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="fu">library</span>(readxl)      <span class="co"># for reading Excel files</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   <span class="co"># includes dplyr, readr, tidyr, and more</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="fu">library</span>(ggplot2)     <span class="co"># for creating plots</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Projects/applied-econometrics/R&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="finished" class="section level1">
+<h1>Finished!</h1>
+<p>That is all for today! Next week we will pick up right from here by
+loading a data set and generating some basic descriptive statistics.</p>
 </div>
 
    
