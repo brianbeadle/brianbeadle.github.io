@@ -1,0 +1,51 @@
+---
+title: 'Statistics'
+subtitle: 'Assignment 1: Generating plots'
+author: "Brian Beadle"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::robobook:
+    self_contained: true
+    thumbnails: false
+    lightbox: false
+    gallery: false
+    highlight: tango
+    fig_width: 13
+    fig_height: 9
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instructions
+
+Generate the following plots using the student data, then email the ```R``` script file to me or show me in class. Refer to the second exercise on my [website](https://brianbeadle.github.io/statistics.html) if you are stuck.
+
+Some guidelines:
+
+- Choose colors that are different from what you see below. You can choose any that you want!
+- Be sure that your first plot has a matching number of columns shown below (hint: they are ```bins```)
+- Write the axis labels exactly as you see them below
+
+```{r, echo=FALSE, out.width='100%', warning=FALSE, message=FALSE}
+rm(list=ls())
+
+library(tidyverse)   # includes dplyr, readr, tidyr, and more
+library(ggplot2)     # for creating plots
+
+d <- read.csv("student_data_complete.csv")
+
+ggplot(d, aes(x = hand, y = after_stat(count / sum(count)))) +
+  geom_histogram(bins = 8, 
+                 fill = "gray", 
+                 color = "black") +
+  labs(y = "Relative frequency", 
+       x = "Hand size (cm)")
+
+d$pet <- as.factor(d$pet)
+
+ggplot(d, aes(x = hand)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Hand size (cm)")
+```
