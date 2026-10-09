@@ -5,7 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Brian Beadle</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <style>
+    /* Layout fixes: keep the content area full width and the iframes large */
+    .sidebar {
+      flex-shrink: 0;
+    }
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .iframe-container {
+      width: 100%;
+      height: 75vh;
+      min-height: 450px;
+    }
+    .iframe-container iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -26,9 +47,9 @@
         <nav>
           <ul>
             <li><a href="#" data-section="tutorials">Tutorials</a></li>
-            <li><a href="#" data-section="education">Education/Experience</a></li>
-            <li><a href="#" data-section="research">Research Projects</a></li>
             <li><a href="#" data-section="publications">Publications</a></li>
+            <li><a href="#" data-section="research">Research Projects</a></li>
+            <li><a href="#" data-section="education">Education/Experience</a></li>
             <li><a href="#" data-section="courses">Courses Taught</a></li>
             <li><a href="https://linkedin.com/in/brian-beadle-a6042546" target="_blank">LinkedIn</a></li>
             <li><a href="CV-amsterdam.pdf" target="_blank">CV</a></li>
@@ -49,6 +70,19 @@
           </details>
         </section>
 
+        <section id="publications" class="content-section">
+          <h2>Publications</h2>
+          <div class="iframe-container">
+            <iframe src="publications.html" frameborder="0"></iframe>
+          </div>
+        </section>
+
+        <section id="research" class="content-section">
+          <h2>Current research projects</h2>
+          <p><i>Click on the links to see media and descriptions of my ongoing research</i></p>
+          <p>1. <a href="research-asia.html">Development of a resilient and sustainable irrigated rice cultivation system</a></p>
+        </section>
+
         <section id="education" class="content-section">
           <h2>Education</h2>
           <p><b>PhD Economics</b> <i>(magna cum laude)</i>, Martin Luther University Halle-Wittenberg</p>
@@ -61,20 +95,6 @@
           <p><b>Assistant Professor of Socially Responsible Management</b>, Northland College</p>
           <p><b>Doctoral Researcher</b>, Leibniz Institute of Agricultural Development in Transition Economies</p>
           <p><b>Teaching Assistant (Introductory Econometrics)</b>, Martin Luther University</p>
-        </section>
-        
-        <section id="research" class="content-section">
-          <h2>Current research projects</h2>
-          <p><i>Click on the links to see media and descriptions of my ongoing research</i></p>
-          <p>1. <a href="research-asia.html">Development of a resilient and sustainable irrigated rice cultivation system</a></p>
-          
-        </section>
-        
-        <section id="publications" class="content-section">
-          <h2>Publications</h2>
-          <div class="iframe-container">
-            <iframe src="publications.html" frameborder="0"></iframe>
-          </div>
         </section>
 
         <section id="courses" class="content-section">
@@ -113,12 +133,12 @@
       navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
-          
+
           // Hide all sections
           sections.forEach(section => {
             section.style.display = 'none';
           });
-          
+
           // Show the selected section
           const sectionId = this.getAttribute('data-section');
           document.getElementById(sectionId).style.display = 'block';
@@ -128,8 +148,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
